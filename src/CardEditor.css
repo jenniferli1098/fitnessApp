@@ -1,0 +1,23 @@
+/*
+table,
+td,
+th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 5px;
+}
+
+*/
+
+.flashcard {
+    width: 100%;
+    padding-top: 20%; /*aspect ratio*/
+    padding-bottom: 20%; /*aspect ratio*/
+}
