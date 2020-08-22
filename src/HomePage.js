@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import './HomePage.css';
+
+/*New imports from bootstrap for Row/Col*/
+/*Must run 'npm install react-bootstrap bootstrap' on cmd line first*/
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -23,14 +30,27 @@ class HomePage extends React.Component {
         }
         console.log(deck);
         return (
-            <tr key={deckId}>
+
+            <Container>
+                <Row>
+                    <Col>
+                    <Link to = {"/viewer/" + deckId} >{deck.name}</Link>
+                    </Col>
+                    <Col>
+                    {deck.description}
+                    </Col>
+                        
+                </Row>    
+            </Container>
+
+            /* <tr key={deckId}>
                 <td>
                     <Link to = {"/viewer/" + deckId} >{deck.name}</Link>
                 </td>
-                <td>{deck.description}</td>
-                {/* <td>{users[owner].username}</td> */}
-                {/* <td class="text-right"><button class="btn btn-light"><i class="fa fa-star-o"></i></button></td> */}
-            </tr>
+                <td>{deck.description}</td> */
+                /*{ <td>{users[owner].username}</td> }*/
+                /*{ <td class="text-right"><button class="btn btn-light"><i class="fa fa-star-o"></i></button></td> }*/
+            /* </tr> */
         );
     
     });
@@ -45,10 +65,11 @@ class HomePage extends React.Component {
             ):( 
                 <div></div>
             )}
+            
             <div class="row">
+                
                 <table class="table">
                     <tbody>
-
                         {decks}
                     </tbody>
                     
