@@ -1,12 +1,14 @@
 import React from 'react';
 import './CardEditor.css';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 import {firebaseConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
+import {connect} from 'react-redux';
 
 class CardEditor extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             cards: [
                 {front: 'front1', back: 'back1'},
@@ -15,6 +17,7 @@ class CardEditor extends React.Component {
             back: '',
             name: '',
             description: '',
+            visibility: true,
         };
     }
 
@@ -55,23 +58,42 @@ class CardEditor extends React.Component {
         this.editCard(event.target.name,event.target.value, event.target.title);
 
     }
-
+    handleCheckboxChange = event => {
+        //console.log(event.target.name);
+        //console.log(event.target.checked);
+        this.setState({[event.target.name]: event.target.checked});
+    }
     createDeck = () => {
 
+        console.log("creating deck");
         const updates = {};
-        const deckId = this.props.firebase.push('/flashcards').key;
-        const newDeck = {cards: this.state.cards, name: this.state.name, description: this.state.description};
-
+        const deckId = this.props.firebase.push('/workouts').key;
+        console.log(this.props.isLoggedIn);
         //add deck
-        updates[`/flashcards/${deckId}`] = newDeck;
-        //add link
-        updates[`/homepage/${deckId}`] = {name: this.state.name, description: this.state.description};
+        updates[`/workouts/${deckId}`] = {
+            cards: this.state.cards,
+            name: this.state.name,
+            description: this.state.description,
+            visibility: this.state.visibility,
+            owner: this.props.isLoggedIn,
+        };
 
+        updates[`/homepage/${deckId}`] = {
+            name: this.state.name,
+            description: this.state.description,
+            owner: this.props.isLoggedIn,
+            visibility: this.state.visibility,
+
+        };
         const onComplete = () => this.props.history.push(`/viewer/${deckId}`);
         this.props.firebase.update(`/`, updates, onComplete);
         
     }
     render() {
+
+        if (!this.props.isLoggedIn) {
+            return <Redirect to="/register" />;
+        }
         const cards = this.state.cards.map((card, index) =>{
             return (
                 <tr>
@@ -153,7 +175,17 @@ class CardEditor extends React.Component {
                     
                 </div>
                 <div class="row">
-                <button
+                    <label> 
+                    <input
+                        name="visibility"
+                        type="checkbox"
+                        checked={this.state.visibility}
+                        onChange={this.handleCheckboxChange}/>
+                        {'  '}
+                        Public</label>
+                </div>
+                <div class="row">
+                    <button
                         class="btn btn-light"
                         onClick={this.createDeck}
                         disabled={this.state.cards.length === 0 || !this.state.name.trim()}
@@ -169,4 +201,14 @@ class CardEditor extends React.Component {
     }
 }
 
-export default compose(firebaseConnect(), withRouter) (CardEditor);
+const mapStateToProps = (state, props) => {
+
+    console.log(state);
+
+    return { isLoggedIn: state.firebase.auth.uid };
+}
+export default compose(
+    firebaseConnect(),
+    connect(mapStateToProps),
+    withRouter,
+  )(CardEditor);

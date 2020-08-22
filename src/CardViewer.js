@@ -112,7 +112,7 @@ class CardViewer extends React.Component {
                         <button class="btn btn-primary" name="prev" onClick={this.prev} disabled={this.state.index === 0}>Prev</button>
                     </div>
                     <div class="col-8">
-                        <button class="btn btn-light flashcard"onClick={this.flip}>{getCard ()}</button>
+                        <button class="btn btn-light workout"onClick={this.flip}>{getCard ()}</button>
                     </div>
                     <div class="col-1">
                         <button class="btn btn-primary" name="next" onClick={this.next} disabled={this.state.index === this.props.cards.length - 1}>Next</button>
@@ -169,7 +169,7 @@ export default compose(
         // console.log('props',props);
         const deckId = props.match.params.deckId;
         //const res = populate(props.firebase, deckId, populates)
-        return [{path: `/flashcards/${deckId}`, storeAs: deckId, populates: populates}];
+        return [{path: `/workouts/${deckId}`, storeAs: deckId, populates: populates}];
     }),
     connect(mapStateToProps),
  )(CardViewer);
