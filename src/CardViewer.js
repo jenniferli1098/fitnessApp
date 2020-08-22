@@ -7,12 +7,11 @@ import {connect} from 'react-redux'
 class CardViewer extends React.Component {
     constructor(props) {
         super(props);
-       // console.log(this.props.cards[0].front);
+       // console.log(this.props.cards[0].move);
         this.state = {
-            front: true,
             index: 0,
             cards: [
-                {front: 'front1', back: 'back1'},
+                {move: 'move1', reps: 'reps1'},
             ],
         };
 
@@ -31,20 +30,18 @@ class CardViewer extends React.Component {
     next = () => {
         const index = (this.state.index + 1);
         this.setState({index});
-        this.setState({front:true});
         //console.log(this.state.index);
     };
     prev = () => {
         const index = (this.state.index - 1);
         this.setState({index});
-        this.setState({front:true});
         //console.log(this.state.index);
     };
 
 
     flip =() => {
-        //console.log(this.state.front);
-        this.setState({front: !this.state.front});
+        //console.log(this.state.move);
+        //this.setState({move: !this.state.move});
     }
 
     onKeyDown = (e) => {
@@ -82,14 +79,8 @@ class CardViewer extends React.Component {
         }
         
         const getCard = () => {
-
-            //console.log(this.state.index);
             const card = this.props.cards[this.state.index];
-            if (this.state.front) {
-                return (<p>{card.front}</p>);
-            } else {
-                return (<p>{card.back}</p>);
-            }
+            return (<div><h4>{card.move}</h4> <p>{card.reps}</p></div>);
         }
         return (
             <div class="container">

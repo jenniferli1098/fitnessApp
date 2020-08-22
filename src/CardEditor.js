@@ -11,12 +11,13 @@ class CardEditor extends React.Component {
         
         this.state = {
             cards: [
-                {front: 'front1', back: 'back1'},
+                {move: 'Jumping Jacks', reps: '10', descr: 'Warm up your arms and legs'},
             ],
-            front: '',
-            back: '',
+            move: '',
+            reps: '',
             name: '',
-            description: '',
+            description: '',            
+            descr: '',
             visibility: true,
         };
     }
@@ -24,10 +25,10 @@ class CardEditor extends React.Component {
     
 
     addCard = () => {
-        const card = {front: this.state.front, back: this.state.back};
+        const card = {move: this.state.move, reps: this.state.reps};
         const cards = this.state.cards.slice().concat(card);
         this.setState({cards});
-        this.setState ({front: '', back: ''});
+        this.setState ({move: '', reps: ''});
     };
 
     deleteCard = index => {
@@ -40,15 +41,18 @@ class CardEditor extends React.Component {
     editCard = (side, value, index)  => {
         const cards = this.state.cards.slice();
         console.log(side);
-        if(side === "front") {
-        cards[index].front = value;
+        if(side === "move") {
+        cards[index].move = value;
+
+        } else if(side == "reps") {
+        cards[index].reps = value;
 
         } else {
-        cards[index].back = value;
+            cards[index].decr = value;
 
         }
         this.setState({cards});
-        console.log(cards[index].back);
+        console.log(cards[index].reps);
     }
 
     handleChange = event => this.setState({[event.target.name]: event.target.value});
@@ -97,8 +101,9 @@ class CardEditor extends React.Component {
         const cards = this.state.cards.map((card, index) =>{
             return (
                 <tr>
-                    <td><input name="front" class="form-control" value={card.front} title={index} onChange={this.editHandleChange}/></td>
-                    <td><input name="back" class="form-control"value={card.back} title={index} onChange={this.editHandleChange}/></td>
+                    <td><input name="move" class="form-control" value={card.move} title={index} onChange={this.editHandleChange}/></td>
+                    <td><input name="reps" class="form-control"value={card.reps} title={index} onChange={this.editHandleChange}/></td>
+                    <td><input name="reps" class="form-control"value={card.descr} title={index} onChange={this.editHandleChange}/></td>
                     <td><button class="btn btn-light" onClick={() => this.deleteCard(index)}>Delete</button></td>
                 </tr>
             )
@@ -107,10 +112,10 @@ class CardEditor extends React.Component {
             <div class="container">
                 <br></br>
                 <div class="row">
-                    <h2>Card Editor</h2>
+                    <h2>Workout Editor</h2>
                 </div>
                 <div>
-                    Deck Name
+                    Workout Name
                     <input 
                         class="form-control"
                         name="name"
@@ -135,8 +140,9 @@ class CardEditor extends React.Component {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Front</th>
-                                <th>Back</th>
+                                <th>Move</th>
+                                <th>Reps</th>
+                                <th>Description</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -147,10 +153,10 @@ class CardEditor extends React.Component {
                                 <td>
                                     <input
                                         class="form-control"
-                                        name="front"
+                                        name="move"
                                         onChange={this.handleChange}
-                                        placeholder="Front of card"
-                                        value={this.state.front}
+                                        placeholder="Move Name"
+                                        value={this.state.move}
                                         required
                                     />
                                 </td>
@@ -158,15 +164,27 @@ class CardEditor extends React.Component {
                                 <td>
                                     <input
                                     class="form-control"
-                                    name="back"
+                                    name="reps"
                                     onChange={this.handleChange}
-                                    placeholder="Back of card"
-                                    value={this.state.back}
+                                    placeholder="Number of Reps"
+                                    value={this.state.reps}
+                                    required
+                                    />
+                                </td>
+
+
+                                <td>
+                                    <input
+                                    class="form-control"
+                                    name="descr"
+                                    onChange={this.handleChange}
+                                    placeholder="Description of move"
+                                    value={this.state.descr}
                                     required
                                     />
                                 </td>
                                 <td>
-                                    <button class="btn btn-light" onClick={this.addCard} type="submit" disabled={!this.state.back || !this.state.front}>Add card</button>
+                                    <button class="btn btn-light" onClick={this.addCard} type="submit" disabled={!this.state.reps || !this.state.move}>Add card</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -190,7 +208,7 @@ class CardEditor extends React.Component {
                         onClick={this.createDeck}
                         disabled={this.state.cards.length === 0 || !this.state.name.trim()}
                     >
-                        Create Deck
+                        Create New Workout Routine
                     </button>
                 </div>
 
