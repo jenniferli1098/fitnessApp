@@ -11,6 +11,8 @@ class PageRegister extends React.Component {
       email: '',
       password: '',
       username: '',
+      numWorkouts: 0,
+      workouts: ['']
     };
   }
 
@@ -26,6 +28,8 @@ class PageRegister extends React.Component {
     const profile = {
       email: this.state.email,
       username: this.state.username,
+      numWorkouts: this.state.numWorkouts,
+      workouts: this.state.workouts,
     };
 
     try {

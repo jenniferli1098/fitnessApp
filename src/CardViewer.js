@@ -39,6 +39,19 @@ class CardViewer extends React.Component {
     };
 
 
+    finishWorkout = () => {
+
+        console.log("done workout");
+        var updates = {};
+        //add deck
+        var num = this.props.num + 1;
+        updates[`/workouts/${this.props.deckId}/num`] = num;
+
+        updates[`/users/${this.props.isLoggedIn}/numWorkouts`]=  this.props.res.owner.numWorkouts+1;
+
+        const onComplete = () => this.props.history.push(`/`);
+        this.props.firebase.update(`/`, updates, onComplete);
+    }
     flip =() => {
         //console.log(this.state.move);
         //this.setState({move: !this.state.move});
@@ -82,6 +95,13 @@ class CardViewer extends React.Component {
             const card = this.props.cards[this.state.index];
             return (<div><h4>{card.move}</h4> <p>{card.reps}</p></div>);
         }
+
+        const finished = () => {
+            if(this.props.isLoggedIn) {
+                console.log("logged In");
+                return (<button class="btn btn-primary" onClick={this.finishWorkout}>Finished!</button>)
+            }
+        }
         return (
             <div class="container">
                 <br></br>
@@ -90,7 +110,13 @@ class CardViewer extends React.Component {
                     <Link to="/"><h2>{this.props.name}</h2></Link>
                 </div>
                 <div class="row">
-                    <p>By: {this.props.res.owner.username}</p> 
+                    <div class="col-6">
+                        <p>By: {this.props.res.owner.username}</p> 
+                        <p>Viewed: {this.props.num}</p>
+                    </div>
+                    <div class="col-6">
+                        {finished()}
+                    </div>
                     
                 </div>
                 <div class="row">
@@ -141,16 +167,20 @@ const populates = [
 const mapStateToProps = (state, props) => {
 
     console.log(state);
-
-    const deck = state.firebase.data[props.match.params.deckId];
+    const deckId = props.match.params.deckId;
+    const deck = state.firebase.data[deckId];
+    console.log(deck)
     const name = deck && deck.name;
     const cards = deck && deck.cards;
-    const description = deck && deck.description
+    const description = deck && deck.description;
+
+    const num = deck && deck.num;
     const res = populate(state.firebase, props.match.params.deckId, populates);
     console.log(res);
-    return {cards: cards, name: name, description: description, 
-        res: res,};
+    return {cards: cards, name: name, description: description, deckId: deckId, 
+        res: res, isLoggedIn: state.firebase.auth.uid, num: num };
 }
+
 
 
 

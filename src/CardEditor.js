@@ -1,7 +1,7 @@
 import React from 'react';
 import './CardEditor.css';
 import {Link, withRouter, Redirect} from 'react-router-dom';
-import {firebaseConnect} from 'react-redux-firebase';
+import {firebaseConnect, populate} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
@@ -80,6 +80,7 @@ class CardEditor extends React.Component {
             description: this.state.description,
             visibility: this.state.visibility,
             owner: this.props.isLoggedIn,
+            num: 0
         };
 
         updates[`/homepage/${deckId}`] = {
@@ -87,8 +88,14 @@ class CardEditor extends React.Component {
             description: this.state.description,
             owner: this.props.isLoggedIn,
             visibility: this.state.visibility,
-
         };
+
+        var workouts = this.props.profile.workouts;
+        console.log(workouts)
+        workouts.push(deckId);
+        console.log(workouts)
+        updates[`/user/${this.props.isLoggedIn}/workouts`] = workouts;
+        
         const onComplete = () => this.props.history.push(`/viewer/${deckId}`);
         this.props.firebase.update(`/`, updates, onComplete);
         
@@ -219,11 +226,16 @@ class CardEditor extends React.Component {
     }
 }
 
+
+
+const populates = [{ child: 'owner', root: 'users' }];
+
 const mapStateToProps = (state, props) => {
 
-    console.log(state);
+    console.log(state.firebase.profile);
 
-    return { isLoggedIn: state.firebase.auth.uid };
+    // const user = populate(state.firebase, state.firebase.auth.uid, populates)
+    return { isLoggedIn: state.firebase.auth.uid, profile: state.firebase.profile};
 }
 export default compose(
     firebaseConnect(),
