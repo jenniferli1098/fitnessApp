@@ -30,24 +30,35 @@ class PageRegister extends React.Component {
     }
     render () {
         return (
-            <div>
-                <p>page register</p>
-                <input
-                    name="email"
-                    onChange={this.handleChange}
-                    placeholder="Email"
-                    value={this.state.email}
-                />
-                <br/>
+            <div class="col-md-6 mx-auto">
+                <br></br>
+                <h1 class="text-center">Page Login</h1>
+                <br></br>
+                <div>{this.state.error}</div>
+                    <div class="form-group">
+                        
+                        <input
+                            name="email"
+                            class="form-control"
+                            onChange={this.handleChange}
+                            placeholder="Email"
+                            value={this.state.email}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            name="password"
+                            type="password"
+                            class="form-control"
+                            onChange={this.handleChange}
+                            placeholder="Password"
+                            value={this.state.password}
+                        />
+                    </div>
 
-                <input
-                    name="password"
-                    onChange={this.handleChange}
-                    placeholder="Password"
-                    value={this.state.password}
-                />
+                    <button class="btn btn-primary" onClick={this.login}>Login</button>
+                
 
-                <button onClick={this.register}>Register</button>
             </div>
         )
     }

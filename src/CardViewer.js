@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
-import {firebaseConnect, isLoaded, isEmpty} from 'react-redux-firebase'
+import {firebaseConnect, isLoaded, isEmpty, populate} from 'react-redux-firebase'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 
@@ -94,14 +94,17 @@ class CardViewer extends React.Component {
         return (
             <div class="container">
                 <br></br>
+
                 <div class="row">
                     <Link to="/"><h2>{this.props.name}</h2></Link>
+                </div>
+                <div class="row">
+                    <p>By: {this.props.res.owner.username}</p> 
                     
                 </div>
                 <div class="row">
                     {this.props.description}
                 </div>
-                <hr/>   
                 <div class="row align-items-center">
 
                     <div class="col-1"></div>
@@ -139,6 +142,11 @@ class CardViewer extends React.Component {
 
     }
 }
+
+const populates = [
+    { child: 'owner', root: 'users' } // replace owner with user object
+  ]
+
 const mapStateToProps = (state, props) => {
 
     console.log(state);
@@ -147,18 +155,35 @@ const mapStateToProps = (state, props) => {
     const name = deck && deck.name;
     const cards = deck && deck.cards;
     const description = deck && deck.description
-    return {cards: cards, name: name, description: description};
+    const res = populate(state.firebase, props.match.params.deckId, populates);
+    console.log(res);
+    return {cards: cards, name: name, description: description, 
+        res: res,};
 }
+
+
 
 export default compose(
     withRouter,
     firebaseConnect(props =>{
         // console.log('props',props);
         const deckId = props.match.params.deckId;
-        return [{path: `/flashcards/${deckId}`, storeAs: deckId}];
+        //const res = populate(props.firebase, deckId, populates)
+        return [{path: `/flashcards/${deckId}`, storeAs: deckId, populates: populates}];
     }),
     connect(mapStateToProps),
  )(CardViewer);
+
+
+// export default compose(
+//     withRouter,
+//     firebaseConnect(props =>{
+//         // console.log('props',props);
+//         const deckId = props.match.params.deckId;
+//         return [{path: `/flashcards/${deckId}`, storeAs: deckId}];
+//     }),
+//     connect(mapStateToProps),
+//  )(CardViewer);
 
  //firebaseConnect([{path: '/flashcards/chemistry', storeAs:'deck1'}])(CardViewer);
 
