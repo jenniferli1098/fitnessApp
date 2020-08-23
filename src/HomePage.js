@@ -35,11 +35,13 @@ class HomePage extends React.Component {
         console.log(deck);
         
         return (
+            <Link to = {"/viewer/" + deckId} >
             <div class="deck-card">
-            <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
+            <h3>{deck.name}</h3>
             <p>{deck.description}</p>
             <img id="ex1.png" class="center" width="200" height="150" />
             </div>
+            </Link>
             
 
             /* <tr key={deckId}>
