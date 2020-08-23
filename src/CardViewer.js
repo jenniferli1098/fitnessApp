@@ -108,6 +108,7 @@ class CardViewer extends React.Component {
                 <h4 class="alert-heading">
                 <Link to="/"><h2>{this.props.name}</h2></Link>
                 </h4>
+                <span class="badge badge-pill badge-primary">Rank</span>
                 <p>By: {this.props.res.owner.username}</p>
                 <p>Viewed: {this.props.num}</p>
                 <div class="col-6">
@@ -117,10 +118,9 @@ class CardViewer extends React.Component {
                 <p class="mb-0"> {this.props.description} </p>
                 </div>
                 
+                                
+                <div class="alert alert-warning" role="alert">
                 <br></br>
-                
-                <div class="row">
-                </div>
                 <div class="row align-items-center">
 
                     <div class="col-1"></div>
@@ -151,7 +151,7 @@ class CardViewer extends React.Component {
                     {/* <Link to="/editor">Switch to Editor</Link> */}
                     </div>
                 </div>
-                
+            </div>
             </div>
         );
 
