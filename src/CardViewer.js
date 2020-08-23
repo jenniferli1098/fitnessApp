@@ -113,11 +113,12 @@ class CardViewer extends React.Component {
                 <span class="badge badge-pill badge-primary">Rank</span>
                 <p>By: {this.props.res.owner.username}</p>
                 <p>Viewed: {this.props.num}</p>
-                <div class="col-6">
-                {finished()}
-                </div>
                 <hr></hr>
                 <p class="mb-0"> {this.props.description} </p>
+                <hr></hr>
+                <button type="button" class="btn btn-link">
+                {finished()}
+                </button>
                 </div>
                 
                                 
@@ -141,16 +142,6 @@ class CardViewer extends React.Component {
                 <div class="row text-center">
                     <div class="col align-self-center">
                         <p>{this.state.index + 1} / {this.props.cards.length}</p>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col align-self-center">
-                        {/* <button class="btn btn-light center"onClick={this.shuffle}>Shuffle</button> */}
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col align-self-center">
-                    {/* <Link to="/editor">Switch to Editor</Link> */}
                     </div>
                 </div>
             </div>
