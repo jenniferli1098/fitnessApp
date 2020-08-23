@@ -103,6 +103,7 @@ class CardViewer extends React.Component {
                 return (<button class="btn btn-primary" onClick={this.finishWorkout} disabled={this.state.index !== this.props.cards.length - 1}>Finished!</button>)
             }
         }
+        
         return (
                 <div class="container">
                 <div class="workout-container">
@@ -118,7 +119,7 @@ class CardViewer extends React.Component {
                 <p class="mb-0"> {this.props.description} </p>
                 <hr></hr>
                 </div>
-                
+                                
                 <div class="alert alert-primary" role="alert">
                 <br></br>
                 <div class="row align-items-center">

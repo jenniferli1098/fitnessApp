@@ -23,11 +23,9 @@ class HomePage extends React.Component {
         return <div>Loading...</div>;
     }else{
         addButton = (
-            <Link to = {"/editor"} ><button class="menuBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>
+            <Link to = {"/editor"} ><button className="menuBtn" title="Create new workout"><i className="fa fa-plus"></i></button></Link>
         );
     }
-
-
 
     const decks = Object.keys(this.props.homepage).map(deckId =>{
         const deck = this.props.homepage[deckId];
@@ -35,13 +33,14 @@ class HomePage extends React.Component {
             return null;
         }
         console.log(deck);
+        
         return (
-                
-            <div class="deck-card">     
+            <div className="deck-card">
             <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
             <p>{deck.description}</p>
-            </div>   
-                        
+            <img id="ex1.png" class="center" width="200" height="150" />
+            </div>
+            
 
             /* <tr key={deckId}>
                 <td>
@@ -49,20 +48,20 @@ class HomePage extends React.Component {
                 </td>
                 <td>{deck.description}</td> */
                 /*{ <td>{users[owner].username}</td> }*/
-                /*{ <td class="text-right"><button class="btn btn-light"><i class="fa fa-star-o"></i></button></td> }*/
+                /*{ <td className="text-right"><button className="btn btn-light"><i className="fa fa-star-o"></i></button></td> }*/
             /* </tr> */
         );
     
     });
 
     return (
-        <div class="container">
+        <div className = "container">
             <br></br>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             
             
 
-            <div class="banner">
+            <div className="banner">
 
                 <h1>Fitness Fun</h1>
                 <br></br>
@@ -71,7 +70,7 @@ class HomePage extends React.Component {
             </div>
 
 
-            <div class="workout-container">
+            <div className="workout-container">
 
             <h2>Workouts</h2>
             <br></br>
@@ -83,7 +82,7 @@ class HomePage extends React.Component {
                 )}
             </h5>
             
-            <div class="row">
+            <div className="row">
 
                 <Container fluid className="workout-display">
                     <Row>
@@ -91,7 +90,7 @@ class HomePage extends React.Component {
                     </Row>
                 </Container>
                 
-                {/*<table class="table">
+                {/*<table className="table">
                 
                     <tbody>
                     {decks}
@@ -101,14 +100,14 @@ class HomePage extends React.Component {
                 
             </div>
 
-            <div class="account">
+            <div className="account">
                 <h2>My Account</h2>
                 <br></br>
                 {this.props.isLoggedIn ? (
                     <div>
                         <div><Link to={"/user/" + this.props.isLoggedIn}><h5>Go to My Profile</h5></Link></div>
                         <br></br>
-                        <button class="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
+                        <button className="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
                     </div>
                 ) : (
                     <div>
