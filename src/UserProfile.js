@@ -45,9 +45,9 @@ const UserProfile = props => {
                     <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} class='profile' />
                 </div>
                 <div class="col-m-6 p-4 text-left">
-                        <h3>{props.username}</h3>
+                        <h3>{props.firstname} {props.lastname}</h3>
                         <br/>
-                        <p>{props.firstname} {props.lastname}</p>
+                        <p>{props.username}</p>
                         <p>{props.numWorkouts} workouts done</p>
                 </div>
                 <br/>
@@ -88,9 +88,12 @@ const mapStateToProps = (state, props) => {
     const username = profile && profile.username;
     const numWorkouts = profile && profile.numWorkouts;
     const workouts = profile && profile.workouts;
+    const lastname = profile && profile.lastname;
+    const firstname = profile && profile.firstname;
 
 
-    return {username:username, numWorkouts:numWorkouts, workouts:workouts, isLoggedIn: state.firebase.auth.uid , userId: userId};
+    return {username:username, numWorkouts:numWorkouts, workouts:workouts, isLoggedIn: state.firebase.auth.uid ,
+         userId: userId, firstname:firstname, lastname:lastname};
 }
 
 

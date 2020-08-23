@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding-top: 50px;
     padding-bottom: 70px;
+    margin-bottom: 50px;
     text-align: center;
     background-image: url("Background3.png");
     background-repeat: no-repeat;
@@ -14,7 +15,8 @@
 }
 
 .workout-container{
-    padding-top: 50px;
+    padding: 40px;
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(234, 237, 243));
 }
 
 .row{
@@ -36,6 +38,7 @@
     width: 300px;
     height: 300px;
     text-align: left;
+    background-color: white;
 }
 
 .account{
