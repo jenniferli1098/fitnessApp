@@ -33,11 +33,27 @@ const Users = props => {
     
     });
     return (
-        <Table>
-            <tbody>
-                {users}
-            </tbody>
-        </Table>
+        <div class="container">
+
+            <div class="banner">
+
+                <h1>Fitness Fun</h1>
+                <br></br>
+                <h3>Users</h3>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <Table>
+                        <tbody>
+                            {users}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
+        
+
+        </div>
     );
 }
 

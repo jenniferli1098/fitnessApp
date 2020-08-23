@@ -5,13 +5,13 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 
 import Figure  from 'react-bootstrap/Figure';
-import './Custom.css';
+import './UserProfile.css';
 
 import Table from 'react-bootstrap/Table'
 
 const UserProfile = props => {
     var addButton = {};
-    if (!isLoaded(props.username)) {
+    if (!isLoaded(props.username) && !isLoaded(props.workouts)) {
         return <div>Loading...</div>;
     } else{
         addButton = (
@@ -33,9 +33,6 @@ const UserProfile = props => {
                     <td>
                     {workout.description}
                     </td>
-                    <td>
-                    {workout.num}
-                    </td>
                         
                 </tr>    
         );
@@ -45,9 +42,9 @@ const UserProfile = props => {
         <div class="container alert alert-success mt-5">
             <div class="row">
                 <div class="col-m-6 p-1">
-                    <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} />
+                    <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} class='profile' />
                 </div>
-                <div class="col-m-6 p-1 text-left">
+                <div class="col-m-6 p-4 text-left">
                         <h3>{props.username}</h3>
                         <br/>
                         <p>{props.firstname} {props.lastname}</p>
@@ -61,7 +58,6 @@ const UserProfile = props => {
                         <tr>
                         <th>Workout</th>
                         <th>Description</th>
-                        <th>Views</th>
                         </tr>
                     </thead>
                     <tbody>
