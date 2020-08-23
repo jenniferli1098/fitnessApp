@@ -130,7 +130,7 @@ class CardEditor extends React.Component {
                         class="form-control"
                         name="name"
                         onChange={this.handleChange}
-                        placeholder="Name of deck"
+                        placeholder="Name of workout routine"
                         value={this.state.name}
                     />
                 </div>
@@ -141,7 +141,7 @@ class CardEditor extends React.Component {
                         class="form-control"
                         name="description"
                         onChange={this.handleChange}
-                        placeholder="Description of deck"
+                        placeholder="Description of workout routine"
                         value={this.state.description}
                     />
                 </div>
