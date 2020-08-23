@@ -39,7 +39,7 @@ const UserProfile = props => {
     return (
         <div>
             <div>
-            <Figure source={{uri:`https://api.adorable.io/avatars/250/${props.isLoggedIn}@adorable.io.png`}} />
+            <img src={`https://api.adorable.io/avatars/250/${props.isLoggedIn}@adorable.io.png`} />
                 
             </div>
             <div>Hello {props.username} </div>
