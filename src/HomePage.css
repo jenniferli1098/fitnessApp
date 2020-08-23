@@ -1,7 +1,6 @@
 .container{
     width: 100%;
     margin: 0 auto;
-    text-align: center;
 }
 
 .banner{
@@ -11,9 +10,13 @@
     text-align: center;
 }
 
+.workout-container{
+    padding-top: 50px;
+}
+
 .row{
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 50px;
     text-align: center;
 }
