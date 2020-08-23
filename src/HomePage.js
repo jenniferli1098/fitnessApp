@@ -69,13 +69,19 @@ class HomePage extends React.Component {
 
                 <h2>Workouts</h2>
 
-                
-                <table class="table">
-                    <tbody>
+                <Container fluid className="workout-display">
+                    <Row>
                         {decks}
+                    </Row>
+                </Container>
+                
+                {/*<table class="table">
+                
+                    <tbody>
+                    {decks}
                     </tbody>
                     
-                </table>
+                </table>*/}
                 
             </div>
 
