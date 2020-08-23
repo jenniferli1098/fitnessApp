@@ -30,18 +30,12 @@ class HomePage extends React.Component {
         }
         console.log(deck);
         return (
-
-            <Container>
-                <Row>
-                    <Col>
-                    <Link to = {"/viewer/" + deckId} >{deck.name}</Link>
-                    </Col>
-                    <Col>
-                    {deck.description}
-                    </Col>
+                
+            <div class="deck-card">     
+            <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
+            <p>{deck.description}</p>
+            </div>   
                         
-                </Row>    
-            </Container>
 
             /* <tr key={deckId}>
                 <td>
@@ -59,14 +53,22 @@ class HomePage extends React.Component {
         <div class="container">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-            <h1>Home Page</h1>
-            {this.props.isLoggedIn ? (
-                <Link to="/editor">New Deck</Link>
-            ):( 
-                <div></div>
-            )}
+            <div class="banner">
+                <h1>Fitness Fun</h1>
+                <br></br>
+                <h3>Stay Healthy. Stay Safe.</h3>
+                
+                {this.props.isLoggedIn ? (
+                    <Link to="/editor">New Deck</Link>
+                ):( 
+                    <div></div>
+                )}
+            </div>
             
             <div class="row">
+
+                <h2>Workouts</h2>
+
                 
                 <table class="table">
                     <tbody>
@@ -76,21 +78,24 @@ class HomePage extends React.Component {
                 </table>
                 
             </div>
-            <h3>Account</h3>
-            {this.props.isLoggedIn ? (
-                <div>
-                    <div>{this.props.email}</div>
-                    <br></br>
-                    <button class="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
-                </div>
-            ) : (
-                <div>
-                    <Link to="/register">Register</Link>
-                    <br/>
-                    <Link to="/login">Login</Link>
-                </div>
-            )
-            }
+
+            <div class="account">
+                <h2>My Account</h2>
+                {this.props.isLoggedIn ? (
+                    <div>
+                        <div>{this.props.email}</div>
+                        <br></br>
+                        <button class="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
+                    </div>
+                ) : (
+                    <div>
+                        <Link to="/register">Register</Link>
+                        <br/>
+                        <Link to="/login">Login</Link>
+                    </div>
+                )
+                }
+            </div>
             
         </div>
         );
