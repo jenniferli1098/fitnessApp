@@ -103,24 +103,23 @@ class CardViewer extends React.Component {
             }
         }
         return (
-            <div class="container">
+                <div class="container">
+                <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">
+                <Link to="/"><h2>{this.props.name}</h2></Link>
+                </h4>
+                <p>By: {this.props.res.owner.username}</p>
+                <p>Viewed: {this.props.num}</p>
+                <div class="col-6">
+                {finished()}
+                </div>
+                <hr></hr>
+                <p class="mb-0"> {this.props.description} </p>
+                </div>
+                
                 <br></br>
-
+                
                 <div class="row">
-                    <Link to="/"><h2>{this.props.name}</h2></Link>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p>By: {this.props.res.owner.username}</p> 
-                        <p>Viewed: {this.props.num}</p>
-                    </div>
-                    <div class="col-6">
-                        {finished()}
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    {this.props.description}
                 </div>
                 <div class="row align-items-center">
 
@@ -136,7 +135,7 @@ class CardViewer extends React.Component {
                     </div>
                     <div class="col-1"></div>
                     
-                </div>        
+                </div>
                 <div class="row text-center">
                     <div class="col align-self-center">
                         <p>{this.state.index + 1} / {this.props.cards.length}</p>
@@ -154,7 +153,6 @@ class CardViewer extends React.Component {
                 </div>
                 
             </div>
-
         );
 
     }
@@ -177,7 +175,7 @@ const mapStateToProps = (state, props) => {
     const num = deck && deck.num;
     const res = populate(state.firebase, props.match.params.deckId, populates);
     console.log(res);
-    return {cards: cards, name: name, description: description, deckId: deckId, 
+    return {cards: cards, name: name, description: description, deckId: deckId,
         res: res, isLoggedIn: state.firebase.auth.uid, num: num };
 }
 
