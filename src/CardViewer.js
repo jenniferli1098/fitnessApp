@@ -17,7 +17,6 @@ class CardViewer extends React.Component {
         };
     }
 
-
     shuffle = () => {
         //alert('s');
         const cards = this.state.cards.slice();
@@ -38,7 +37,6 @@ class CardViewer extends React.Component {
         this.setState({index});
         //console.log(this.state.index);
     };
-
 
     finishWorkout = () => {
         console.log("done workout");
@@ -86,7 +84,6 @@ class CardViewer extends React.Component {
         if(!isLoaded(this.props.cards)) {
             return <div>Loading...</div>
         }
-
         
         if(isEmpty(this.props.cards)) {
             return <div>Page not found!</div>
@@ -112,12 +109,10 @@ class CardViewer extends React.Component {
                 <h4 class="alert-heading">
                 <h2>{this.props.name}</h2>
                 </h4>
-                <span class="badge badge-pill badge-primary">Rank</span>
                 <p>By: {this.props.res.owner.username}</p>
                 <p>Viewed: {this.props.num}</p>
                 <hr></hr>
                 <p class="mb-0"> {this.props.description} </p>
-                <hr></hr>
                 </div>
                                 
                 <div class="alert alert-primary" role="alert">
@@ -146,6 +141,7 @@ class CardViewer extends React.Component {
             <button type="button" right="80%" class="btn btn-link putRight">
                 {finished()}
             </button>
+                <br/>
                 <br/>
                 </div>
             </div>

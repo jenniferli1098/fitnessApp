@@ -28,18 +28,34 @@ class HomePage extends React.Component {
     }
 
     const decks = Object.keys(this.props.homepage).map(deckId =>{
+        
         const deck = this.props.homepage[deckId];
+        
         if (deck.visibility === false && deck.owner !== this.props.isLoggedIn) {
             return null;
         }
         console.log(deck);
+        
+        var source = "";
+        
+        if (deck.tag == "Cardio") {
+            source = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/woman-running-type-3_1f3c3-1f3fc-200d-2640-fe0f.png"
+        } else if (deck.tag == "Strength"){
+            source = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/weight-lifter_1f3cb.png"
+        } else if (deck.tag == "Yoga"){
+            source = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/person-in-lotus-position_emoji-modifier-fitzpatrick-type-1-2_1f9d8-1f3fb_1f3fb.png"
+        } else if (deck.tag == "Sports"){
+            source = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/man-with-ball-type-5_26f9-1f3fe-200d-2642-fe0f.png"
+        } else {
+            source = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/pedestrian_emoji-modifier-fitzpatrick-type-6_1f6b6-1f3ff_1f3ff.png"
+        }
         
         return (
             <Link to = {"/viewer/" + deckId} >
             <div class="deck-card">
             <h3>{deck.name}</h3>
             <p>{deck.description}</p>
-            <img id="ex1.png" class="center" width="200" height="150" />
+                <img src = {source} id = "exerciseImage" class="center" width="170" height="170" />
             </div>
             </Link>
             
