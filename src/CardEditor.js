@@ -17,7 +17,7 @@ class CardEditor extends React.Component {
             reps: '',
             name: '',
             description: '',
-            descr: '',
+            tag: '',
             visibility: true,
         };
     }
@@ -45,9 +45,6 @@ class CardEditor extends React.Component {
         } else if(side == "reps") {
         cards[index].reps = value;
 
-        } else {
-            cards[index].decr = value;
-
         }
         this.setState({cards});
         console.log(cards[index].reps);
@@ -67,7 +64,6 @@ class CardEditor extends React.Component {
     }
     createDeck = () => {
 
-        console.log("creating deck");
         const updates = {};
         const workoutId = this.props.firebase.push('/workouts').key;
         console.log(this.props.isLoggedIn);
@@ -78,6 +74,7 @@ class CardEditor extends React.Component {
             description: this.state.description,
             visibility: this.state.visibility,
             owner: this.props.isLoggedIn,
+            tag: this.state.tag,
             num: 0
         };
 
@@ -86,6 +83,7 @@ class CardEditor extends React.Component {
             description: this.state.description,
             owner: this.props.isLoggedIn,
             visibility: this.state.visibility,
+            tag: this.state.tag,
         }
         updates[`/homepage/${workoutId}`] = workout;
 
@@ -144,6 +142,22 @@ class CardEditor extends React.Component {
                         placeholder="Description of workout routine"
                         value={this.state.description}
                     />
+                </div>
+                <br></br>
+                <div>
+                    Tag
+                    <select class="form-control"
+                        name="tag"
+                        onChange={this.handleChange}
+                        placeholder="Tag of workout routine"
+                        value={this.state.tag}
+                    >
+                    <option>Cardio</option>
+                    <option>Strength</option>
+                    <option>Yoga</option>
+                    <option>Sports</option>
+                    <option>Cool Down</option>
+                    </select>
                 </div>
                 <br></br>
                 <div class="row">
