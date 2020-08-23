@@ -71,10 +71,10 @@ class CardEditor extends React.Component {
 
         console.log("creating deck");
         const updates = {};
-        const deckId = this.props.firebase.push('/workouts').key;
+        const workoutId = this.props.firebase.push('/workouts').key;
         console.log(this.props.isLoggedIn);
         //add deck
-        updates[`/workouts/${deckId}`] = {
+        updates[`/workouts/${workoutId}`] = {
             cards: this.state.cards,
             name: this.state.name,
             description: this.state.description,
@@ -83,20 +83,22 @@ class CardEditor extends React.Component {
             num: 0
         };
 
-        updates[`/homepage/${deckId}`] = {
+        var workout = {
             name: this.state.name,
             description: this.state.description,
             owner: this.props.isLoggedIn,
             visibility: this.state.visibility,
-        };
+        }
+        updates[`/homepage/${workoutId}`] = workout;
 
         var workouts = this.props.profile.workouts;
-        console.log(workouts)
-        workouts.push(deckId);
-        console.log(workouts)
-        updates[`/user/${this.props.isLoggedIn}/workouts`] = workouts;
+        workout.id = workoutId;
+        workouts.push(workout);
+
+
+        updates[`/users/${this.props.isLoggedIn}/workouts`] = workouts;
         
-        const onComplete = () => this.props.history.push(`/viewer/${deckId}`);
+        const onComplete = () => this.props.history.push(`/viewer/${workoutId}`);
         this.props.firebase.update(`/`, updates, onComplete);
         
     }
@@ -220,7 +222,7 @@ class CardEditor extends React.Component {
                 </div>
 
                 <br/>
-                    {/* <Link to="/viewer/{deckId}">Switch to Card Viewer</Link> */}
+                    {/* <Link to="/viewer/{workoutId}">Switch to Card Viewer</Link> */}
             </div>
         );
     }

@@ -46,6 +46,7 @@ class CardViewer extends React.Component {
         //add deck
         var num = this.props.num + 1;
         updates[`/workouts/${this.props.deckId}/num`] = num;
+        updates[`/homepage/${this.props.deckId}/num`] = num;
 
         updates[`/users/${this.props.isLoggedIn}/numWorkouts`]=  this.props.res.owner.numWorkouts+1;
 
@@ -166,7 +167,7 @@ const populates = [
 
 const mapStateToProps = (state, props) => {
 
-    console.log(state);
+    console.log(props);
     const deckId = props.match.params.deckId;
     const deck = state.firebase.data[deckId];
     console.log(deck)
