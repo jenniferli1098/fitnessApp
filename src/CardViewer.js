@@ -104,9 +104,10 @@ class CardViewer extends React.Component {
         }
         return (
                 <div class="container">
+                <button type="button" class="btn btn-link"><Link to="/">Home</Link></button>
                 <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">
-                <Link to="/"><h2>{this.props.name}</h2></Link>
+                <h2>{this.props.name}</h2>
                 </h4>
                 <span class="badge badge-pill badge-primary">Rank</span>
                 <p>By: {this.props.res.owner.username}</p>
