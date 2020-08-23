@@ -81,7 +81,7 @@ class HomePage extends React.Component {
 
             <div class="banner">
 
-                <h1>Fabulously Fit</h1>
+                <h1>Don't Sit Be Fit</h1>
                 <br></br>
                 <h3><i>Your personal fitness assistant.</i></h3>
 
