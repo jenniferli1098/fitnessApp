@@ -16,13 +16,11 @@ class CardEditor extends React.Component {
             move: '',
             reps: '',
             name: '',
-            description: '',            
+            description: '',
             descr: '',
             visibility: true,
         };
     }
-
-    
 
     addCard = () => {
         const card = {move: this.state.move, reps: this.state.reps};

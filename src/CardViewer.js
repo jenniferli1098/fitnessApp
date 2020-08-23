@@ -32,6 +32,7 @@ class CardViewer extends React.Component {
         this.setState({index});
         //console.log(this.state.index);
     };
+    
     prev = () => {
         const index = (this.state.index - 1);
         this.setState({index});
@@ -116,7 +117,6 @@ class CardViewer extends React.Component {
                 <p class="mb-0"> {this.props.description} </p>
                 <hr></hr>
                 </div>
-                
                 
                 <div class="alert alert-warning" role="alert">
                 <br></br>
