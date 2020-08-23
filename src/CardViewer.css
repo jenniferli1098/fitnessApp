@@ -1,3 +1,7 @@
 .putRight{
     float: right;
 }
+
+.workout-container{
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(234, 237, 243));
+}

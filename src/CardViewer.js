@@ -105,6 +105,7 @@ class CardViewer extends React.Component {
         }
         return (
                 <div class="container">
+                <div class="workout-container">
                 <button type="button" class="btn btn-link"><Link to="/">Home</Link></button>
                 <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">
@@ -118,7 +119,7 @@ class CardViewer extends React.Component {
                 <hr></hr>
                 </div>
                 
-                <div class="alert alert-warning" role="alert">
+                <div class="alert alert-primary" role="alert">
                 <br></br>
                 <div class="row align-items-center">
 
@@ -144,6 +145,8 @@ class CardViewer extends React.Component {
             <button type="button" right="80%" class="btn btn-link putRight">
                 {finished()}
             </button>
+                <br/>
+                </div>
             </div>
         );
     }

@@ -101,10 +101,11 @@ class CardEditor extends React.Component {
         
     }
     render() {
-
+        
         if (!this.props.isLoggedIn) {
             return <Redirect to="/register" />;
         }
+        
         const cards = this.state.cards.map((card, index) =>{
             return (
                 <tr>
@@ -116,6 +117,9 @@ class CardEditor extends React.Component {
         });
         return (
             <div class="container">
+
+                <div class="workout-container">
+                <button type="button" class="btn btn-link"><Link to="/">Home</Link></button>
                 <br></br>
                 <div class="row">
                     <h2>Workout Editor</h2>
@@ -209,7 +213,9 @@ class CardEditor extends React.Component {
                 </div>
 
                 <br/>
-                    {/* <Link to="/viewer/{workoutId}">Switch to Card Viewer</Link> */}
+                <br/>
+                
+                </div>
             </div>
         );
     }
