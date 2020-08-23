@@ -11,6 +11,8 @@ class PageRegister extends React.Component {
       email: '',
       password: '',
       username: '',
+      firstname: '',
+      lastname: '',
       numWorkouts: 0,
       workouts: ['']
     };
@@ -26,6 +28,8 @@ class PageRegister extends React.Component {
     };
 
     const profile = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
       email: this.state.email,
       username: this.state.username,
       numWorkouts: this.state.numWorkouts,
@@ -50,7 +54,27 @@ class PageRegister extends React.Component {
         <br></br>
         <h1 class="text-center">Page Register</h1>
         <br></br>
-        <div>{this.state.error}</div>
+            <div>{this.state.error}</div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input
+                    class="form-control"
+                    name="firstname"
+                    onChange={this.handleChange}
+                    placeholder="First Name"
+                    value={this.state.firstname}
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <input
+                    class="form-control"
+                    name="lastname"
+                    onChange={this.handleChange}
+                    placeholder="Last Name"
+                    value={this.state.lastname}
+                />
+              </div>
+            </div>
             <div class="form-group">
                 <input
                     class="form-control"
