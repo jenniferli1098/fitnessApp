@@ -15,14 +15,24 @@ import {
 } from 'react-redux-firebase';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-var firebaseConfig = {
+// var firebaseConfig = {
+//     apiKey: "AIzaSyAT0u3qWkmAjSc-cPFmB0EfwjAsL5_d3QM",
+//     authDomain: "anotherrep.firebaseapp.com",
+//     databaseURL: "https://anotherrep.firebaseio.com",
+//     projectId: "anotherrep",
+//     storageBucket: "anotherrep.appspot.com",
+//     messagingSenderId: "556199010113",
+//     appId: "1:556199010113:web:4cb4f552d776480555cbc0"
+//   };
+
+  var firebaseConfig = {
     apiKey: "AIzaSyAT0u3qWkmAjSc-cPFmB0EfwjAsL5_d3QM",
-    authDomain: "anotherrep.firebaseapp.com",
+    authDomain: "dontsitbefit.firebaseapp.com",
     databaseURL: "https://anotherrep.firebaseio.com",
     projectId: "anotherrep",
     storageBucket: "anotherrep.appspot.com",
     messagingSenderId: "556199010113",
-    appId: "1:556199010113:web:4cb4f552d776480555cbc0"
+    appId: "1:556199010113:web:0576ce5108606ca855cbc0"
   };
 
 

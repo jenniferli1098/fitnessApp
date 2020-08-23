@@ -1,5 +1,7 @@
 {
   "hosting": {
+    "postdeploy": "npm run-script build",
+    "site": "dontsitbefit",
     "public": "build",
     "ignore": [
       "firebase.json",
@@ -7,4 +9,5 @@
       "**/node_modules/**"
     ]
   }
+  
 }
