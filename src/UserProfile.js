@@ -5,14 +5,17 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 
 import Figure  from 'react-bootstrap/Figure';
+import './Custom.css';
 
 import Table from 'react-bootstrap/Table'
 
 const UserProfile = props => {
+    var addButton = {};
     if (!isLoaded(props.username)) {
         return <div>Loading...</div>;
+    } else{
+        addButton = (<Link to = {"/editor"} ><button id="myBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>);
     }
-
     const workouts = Object.keys(props.workouts).map(workoutId =>{
         const workout = props.workouts[workoutId];
         if (workout.visibility === false && workout.owner !== this.props.isLoggedIn) {
@@ -37,25 +40,35 @@ const UserProfile = props => {
     
     });
     return (
-        <div>
-            <div>
-            <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} />
-                
+        <div class="container alert alert-success mt-5">
+            <div class="row">
+                <div class="col-6 p-1">
+                    <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} />
+                </div>
+                <div class="col-6 p-1 text-left">
+                        <h3>{props.username}</h3>
+                        <br/>
+                        <p>{props.firstname} {props.lastname}</p>
+                        <p>{props.numWorkouts} workouts done</p>
+                </div>
+                <br/>
             </div>
-            <div>Hello {props.username} </div>
-            <div>Hello {props.numWorkouts} </div>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                    <th>Workout</th>
-                    <th>Description</th>
-                    <th>Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {workouts}
-                </tbody>
-            </Table>
+            <div class="row">
+                <Table striped hover>
+                    <thead>
+                        <tr>
+                        <th>Workout</th>
+                        <th>Description</th>
+                        <th>Views</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {workouts}
+                    </tbody>
+                </Table>
+            </div>
+
+            {addButton}           
 
         </div>
     );
