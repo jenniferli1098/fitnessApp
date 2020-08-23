@@ -152,7 +152,6 @@ class CardEditor extends React.Component {
                             <tr>
                                 <th>Move</th>
                                 <th>Reps</th>
-                                <th>Description</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>

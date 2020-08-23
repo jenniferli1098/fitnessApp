@@ -36,11 +36,12 @@ class HomePage extends React.Component {
         }
         console.log(deck);
         return (
-                
-            <div class="deck-card">     
-            <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
+            <Link to = {"/viewer/" + deckId} >  
+            <div class="deck-card">   
+            <h3>{deck.name}</h3>
             <p>{deck.description}</p>
             </div>   
+            </Link>
                         
 
             /* <tr key={deckId}>
