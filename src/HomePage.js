@@ -83,7 +83,7 @@ class HomePage extends React.Component {
 
                 <h1>Fabulously Fit</h1>
                 <br></br>
-                <h3>Your personal fitness assistant.</h3>
+                <h3><i>Your personal fitness assistant.</i></h3>
 
             </div>
 
