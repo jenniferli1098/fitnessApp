@@ -22,5 +22,25 @@
 
 .profile { 
     border-radius: 25px; /* Rounded corners */
+}
 
+
+.profile-container{
+  padding: 40px;
+  background-image: linear-gradient( rgb(255, 255, 255), rgb(234, 237, 243));
+}
+
+.bg-brown{
+  background-color: rgb(173, 123, 46);
+}
+.bg-silver {
+  background-color: rgb(173, 173, 173);
+}
+.bg-gold {
+  background-color: gold;
+}
+
+.bg-platinum {
+  background-color: rgb(188, 199, 197);
+  color: black;
 }
