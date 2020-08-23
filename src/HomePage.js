@@ -23,7 +23,7 @@ class HomePage extends React.Component {
         return <div>Loading...</div>;
     }else{
         addButton = (
-            <Link to = {"/editor"} ><button className="menuBtn" title="Create new workout"><i className="fa fa-plus"></i></button></Link>
+            <Link to = {"/editor"} ><button class="menuBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>
         );
     }
 
@@ -35,22 +35,12 @@ class HomePage extends React.Component {
         console.log(deck);
         
         return (
-<<<<<<< HEAD
-            <div className="deck-card">
+            <div class="deck-card">
             <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
             <p>{deck.description}</p>
             <img id="ex1.png" class="center" width="200" height="150" />
             </div>
             
-=======
-            <Link to = {"/viewer/" + deckId} >  
-            <div class="deck-card">   
-            <h3>{deck.name}</h3>
-            <p>{deck.description}</p>
-            </div>   
-            </Link>
-                        
->>>>>>> 47d42df444a12ea87cd94dcb651c85b6e71f2d81
 
             /* <tr key={deckId}>
                 <td>
@@ -58,49 +48,49 @@ class HomePage extends React.Component {
                 </td>
                 <td>{deck.description}</td> */
                 /*{ <td>{users[owner].username}</td> }*/
-                /*{ <td className="text-right"><button className="btn btn-light"><i className="fa fa-star-o"></i></button></td> }*/
+                /*{ <td class="text-right"><button class="btn btn-light"><i class="fa fa-star-o"></i></button></td> }*/
             /* </tr> */
         );
     
     });
 
     return (
-        <div className = "container">
+        <div class = "container">
             <br></br>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             
             
 
-            <div className="banner">
+            <div class="banner">
 
                 <h1>Fitness Fun</h1>
                 <br></br>
-                <h3><i>Stay Healthy. Stay Safe.</i></h3>
+                <h3>Stay Healthy. Stay Safe.</h3>
 
             </div>
 
 
-            <div className="workout-container">
+            <div class="workout-container">
 
-            <h2>Workout Routines</h2>
+            <h2>Workouts</h2>
             <br></br>
             <h5>
             {this.props.isLoggedIn ? (
                     <Link to="/editor">Add a New Workout Routine</Link>
-                ):( 
+                ):(
                     <div></div>
                 )}
             </h5>
             
-            <div className="row">
+            <div class="row">
 
-                <Container fluid className="workout-display">
+                <Container fluid class="workout-display">
                     <Row>
                         {decks}
                     </Row>
                 </Container>
                 
-                {/*<table className="table">
+                {/*<table class="table">
                 
                     <tbody>
                     {decks}
@@ -110,14 +100,14 @@ class HomePage extends React.Component {
                 
             </div>
 
-            <div className="account">
+            <div class="account">
                 <h2>My Account</h2>
                 <br></br>
                 {this.props.isLoggedIn ? (
                     <div>
                         <div><Link to={"/user/" + this.props.isLoggedIn}><h5>Go to My Profile</h5></Link></div>
                         <br></br>
-                        <button className="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
+                        <button class="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
                     </div>
                 ) : (
                     <div>
