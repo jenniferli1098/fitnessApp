@@ -65,8 +65,8 @@ class HomePage extends React.Component {
             </div>
 
 
-            <div class="alert alert-info" role="alert">
             <div class="workout-container">
+
             <h2>Workouts</h2>
             <br></br>
             <h5>
@@ -78,8 +78,6 @@ class HomePage extends React.Component {
             </h5>
             
             <div class="row">
-
-                
 
                 <Container fluid className="workout-display">
                     <Row>
@@ -95,8 +93,6 @@ class HomePage extends React.Component {
                     
                 </table>*/}
                 
-            </div>
-            </div>
             </div>
 
             <div class="account">
@@ -116,6 +112,9 @@ class HomePage extends React.Component {
                 )
                 }
             </div>
+            </div>
+
+            
             
         </div>
         );
