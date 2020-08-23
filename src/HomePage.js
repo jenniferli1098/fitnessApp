@@ -4,6 +4,7 @@ import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import './HomePage.css';
+import './UserProfile.css';
 
 /*New imports from bootstrap for Row/Col*/
 /*Must run 'npm install react-bootstrap bootstrap' on cmd line first*/
@@ -17,8 +18,13 @@ class HomePage extends React.Component {
         this.state = {};
     }
     render () {
+    var addButton = {};
     if (!isLoaded(this.props.homepage)) {
         return <div>Loading...</div>;
+    }else{
+        addButton = (
+            <Link to = {"/editor"} ><button class="menuBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>
+        );
     }
 
 

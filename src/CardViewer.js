@@ -99,7 +99,7 @@ class CardViewer extends React.Component {
         const finished = () => {
             if(this.props.isLoggedIn) {
                 console.log("logged In");
-                return (<button class="btn btn-primary" onClick={this.finishWorkout}>Finished!</button>)
+                return (<button class="btn btn-primary" onClick={this.finishWorkout} disabled={this.state.index !== this.props.cards.length - 1}>Finished!</button>)
             }
         }
         return (
