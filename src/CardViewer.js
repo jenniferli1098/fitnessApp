@@ -3,6 +3,7 @@ import {Link, withRouter} from 'react-router-dom'
 import {firebaseConnect, isLoaded, isEmpty, populate} from 'react-redux-firebase'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
+import './CardViewer.css';
 
 class CardViewer extends React.Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class CardViewer extends React.Component {
                 {move: 'move1', reps: 'reps1'},
             ],
         };
-
     }
 
 
@@ -40,7 +40,6 @@ class CardViewer extends React.Component {
 
 
     finishWorkout = () => {
-
         console.log("done workout");
         var updates = {};
         //add deck
@@ -116,12 +115,9 @@ class CardViewer extends React.Component {
                 <hr></hr>
                 <p class="mb-0"> {this.props.description} </p>
                 <hr></hr>
-                <button type="button" class="btn btn-link">
-                {finished()}
-                </button>
                 </div>
                 
-                                
+                
                 <div class="alert alert-warning" role="alert">
                 <br></br>
                 <div class="row align-items-center">
@@ -145,9 +141,11 @@ class CardViewer extends React.Component {
                     </div>
                 </div>
             </div>
+            <button type="button" right="80%" class="btn btn-link putRight">
+                {finished()}
+            </button>
             </div>
         );
-
     }
 }
 
