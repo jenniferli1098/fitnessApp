@@ -62,17 +62,24 @@ class HomePage extends React.Component {
                 <br></br>
                 <h3>Stay Healthy. Stay Safe.</h3>
 
-                
-                {this.props.isLoggedIn ? (
-                    <Link to="/editor">New Deck</Link>
+            </div>
+
+
+            <div class="alert alert-info" role="alert">
+            <div class="workout-container">
+            <h2>Workouts</h2>
+            <br></br>
+            <h5>
+            {this.props.isLoggedIn ? (
+                    <Link to="/editor">Add a New Workout Routine</Link>
                 ):( 
                     <div></div>
                 )}
-            </div>
-            <div class="alert alert-info" role="alert">
+            </h5>
+            
             <div class="row">
 
-                <h2>Workouts</h2>
+                
 
                 <Container fluid className="workout-display">
                     <Row>
@@ -88,6 +95,7 @@ class HomePage extends React.Component {
                     
                 </table>*/}
                 
+            </div>
             </div>
             </div>
 
