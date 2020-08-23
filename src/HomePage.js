@@ -66,14 +66,14 @@ class HomePage extends React.Component {
 
                 <h1>Fitness Fun</h1>
                 <br></br>
-                <h3>Stay Healthy. Stay Safe.</h3>
+                <h3><i>Stay Healthy. Stay Safe.</i></h3>
 
             </div>
 
 
             <div class="workout-container">
 
-            <h2>Workouts</h2>
+            <h2>Workout Routines</h2>
             <br></br>
             <h5>
             {this.props.isLoggedIn ? (
