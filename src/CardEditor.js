@@ -139,7 +139,8 @@ class CardEditor extends React.Component {
                         class="form-control"
                         name="description"
                         onChange={this.handleChange}
-                        placeholder="Description of workout routine"
+                        placeholder="Description of workout routine (40 characters max)"
+                        maxlength="40"
                         value={this.state.description}
                     />
                 </div>
