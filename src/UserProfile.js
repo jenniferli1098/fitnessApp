@@ -4,10 +4,8 @@ import {firebaseConnect, isLoaded, isEmpty, populate} from 'react-redux-firebase
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 
+import Figure  from 'react-bootstrap/Figure';
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Table from 'react-bootstrap/Table'
 
 const UserProfile = props => {
@@ -40,6 +38,10 @@ const UserProfile = props => {
     });
     return (
         <div>
+            <div>
+            <Figure source={{uri:`https://api.adorable.io/avatars/250/${props.isLoggedIn}@adorable.io.png`}} />
+                
+            </div>
             <div>Hello {props.username} </div>
             <div>Hello {props.numWorkouts} </div>
             <Table striped bordered hover>
