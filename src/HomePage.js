@@ -51,12 +51,17 @@ class HomePage extends React.Component {
 
     return (
         <div class="container">
+            <br></br>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+            
+            <div class="alert alert-primary" role="alert">
 
             <div class="banner">
+
                 <h1>Fitness Fun</h1>
                 <br></br>
                 <h3>Stay Healthy. Stay Safe.</h3>
+
                 
                 {this.props.isLoggedIn ? (
                     <Link to="/editor">New Deck</Link>
@@ -64,7 +69,9 @@ class HomePage extends React.Component {
                     <div></div>
                 )}
             </div>
+            </div>
             
+            <div class="alert alert-info" role="alert">
             <div class="row">
 
                 <h2>Workouts</h2>
@@ -83,6 +90,7 @@ class HomePage extends React.Component {
                     
                 </table>*/}
                 
+            </div>
             </div>
 
             <div class="account">
