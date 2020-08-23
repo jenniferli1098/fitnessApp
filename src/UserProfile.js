@@ -7,16 +7,29 @@ import {connect} from 'react-redux'
 import Figure  from 'react-bootstrap/Figure';
 import './UserProfile.css';
 
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
 
 const UserProfile = props => {
     var addButton = {};
+    var badges = {};
     if (!isLoaded(props.username) && !isLoaded(props.workouts)) {
         return <div>Loading...</div>;
     } else{
         addButton = (
             <Link to = {"/editor"} ><button class="menuBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>
         );
+
+        if(props.numWorkouts > 100) {
+            badges = (<span class="badge badge-pill bg-platinum">Platinum</span>);
+        }else if(props.numWorkouts > 50) {
+            badges = (<span class="badge badge-pill bg-gold">Gold</span>);
+        } else if(props.numWorkouts > 25){
+            badges = (<span class="badge badge-pill bg-silver">Silver</span>);
+        } else if (props.numWorkouts > 10){
+            badges = (<span class="badge badge-pill bg-bronze">Bronze</span>);
+        } else {
+            badges = (<span class="badge badge-pill bg-dark text-white">Novice</span>);
+        }
     }
     const workouts = Object.keys(props.workouts).map(workoutId =>{
         const workout = props.workouts[workoutId];
@@ -39,16 +52,19 @@ const UserProfile = props => {
     
     });
     return (
-        <div class="container alert alert-success mt-5">
+        <div class="container profile-container mt-5">
             <div class="row">
                 <div class="col-m-6 p-1">
-                    <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} class='profile' />
+                {/* <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} class='profile' /> */}
+                <img src={`http://tinygraphs.com/labs/isogrids/hexa/${props.userId}?theme=bythepool&numcolors=4&size=220&fmt=svg`}/>
+                    
                 </div>
                 <div class="col-m-6 p-4 text-left">
                         <h3>{props.firstname} {props.lastname}</h3>
                         <br/>
                         <p>{props.username}</p>
                         <p>{props.numWorkouts} workouts done</p>
+                        <p>{badges}</p>
                 </div>
                 <br/>
             </div>

@@ -35,12 +35,22 @@ class HomePage extends React.Component {
         console.log(deck);
         
         return (
+<<<<<<< HEAD
             <div className="deck-card">
             <h3><Link to = {"/viewer/" + deckId} >{deck.name}</Link></h3>
             <p>{deck.description}</p>
             <img id="ex1.png" class="center" width="200" height="150" />
             </div>
             
+=======
+            <Link to = {"/viewer/" + deckId} >  
+            <div class="deck-card">   
+            <h3>{deck.name}</h3>
+            <p>{deck.description}</p>
+            </div>   
+            </Link>
+                        
+>>>>>>> 47d42df444a12ea87cd94dcb651c85b6e71f2d81
 
             /* <tr key={deckId}>
                 <td>
@@ -65,14 +75,14 @@ class HomePage extends React.Component {
 
                 <h1>Fitness Fun</h1>
                 <br></br>
-                <h3>Stay Healthy. Stay Safe.</h3>
+                <h3><i>Stay Healthy. Stay Safe.</i></h3>
 
             </div>
 
 
             <div className="workout-container">
 
-            <h2>Workouts</h2>
+            <h2>Workout Routines</h2>
             <br></br>
             <h5>
             {this.props.isLoggedIn ? (
