@@ -11,7 +11,7 @@ class CardEditor extends React.Component {
         
         this.state = {
             cards: [
-                {move: 'Jumping Jacks', reps: '10', descr: 'Warm up your arms and legs'},
+                {move: 'Jumping Jacks', reps: '10'},
             ],
             move: '',
             reps: '',
@@ -112,7 +112,6 @@ class CardEditor extends React.Component {
                 <tr>
                     <td><input name="move" class="form-control" value={card.move} title={index} onChange={this.editHandleChange}/></td>
                     <td><input name="reps" class="form-control"value={card.reps} title={index} onChange={this.editHandleChange}/></td>
-                    <td><input name="reps" class="form-control"value={card.descr} title={index} onChange={this.editHandleChange}/></td>
                     <td><button class="btn btn-light" onClick={() => this.deleteCard(index)}>Delete</button></td>
                 </tr>
             )
@@ -182,16 +181,6 @@ class CardEditor extends React.Component {
                                 </td>
 
 
-                                <td>
-                                    <input
-                                    class="form-control"
-                                    name="descr"
-                                    onChange={this.handleChange}
-                                    placeholder="Description of move"
-                                    value={this.state.descr}
-                                    required
-                                    />
-                                </td>
                                 <td>
                                     <button class="btn btn-light" onClick={this.addCard} type="submit" disabled={!this.state.reps || !this.state.move}>Add card</button>
                                 </td>
