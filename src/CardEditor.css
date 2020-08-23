@@ -16,6 +16,11 @@ th {
 
 */
 
+.workout-container{
+    padding: 40px;
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(234, 237, 243));
+}
+
 .workout {
     width: 100%;
     padding-top: 20%; /*aspect ratio*/

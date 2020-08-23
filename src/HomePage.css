@@ -14,6 +14,11 @@
     background-position: center;
 }
 
+.banner h1{
+    color: rgb(6, 6, 87);
+    font-size: 5rem;
+}
+
 .workout-container{
     padding: 40px;
     background-image: linear-gradient( rgb(255, 255, 255), rgb(220, 222, 224));

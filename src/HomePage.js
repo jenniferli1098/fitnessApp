@@ -66,14 +66,14 @@ class HomePage extends React.Component {
 
                 <h1>Fitness Fun</h1>
                 <br></br>
-                <h3>Stay Healthy. Stay Safe.</h3>
+                <h3><i>Stay Healthy. Stay Safe.</i></h3>
 
             </div>
 
 
             <div class="workout-container">
 
-            <h2>Workouts</h2>
+            <h2>Workout Routines</h2>
             <br></br>
             <h5>
             {this.props.isLoggedIn ? (
@@ -103,17 +103,18 @@ class HomePage extends React.Component {
 
             <div class="account">
                 <h2>My Account</h2>
+                <br></br>
                 {this.props.isLoggedIn ? (
                     <div>
-                        <div>{this.props.email}</div>
+                        <div><Link to={"/user/" + this.props.isLoggedIn}><h5>Go to My Profile</h5></Link></div>
                         <br></br>
                         <button class="btn btn-primary" onClick={() => {this.props.firebase.logout(); window.location.reload(true);}}>Logout</button>
                     </div>
                 ) : (
                     <div>
-                        <Link to="/register">Register</Link>
+                        <h5><Link to="/register">Register</Link></h5>
                         <br/>
-                        <Link to="/login">Login</Link>
+                        <h5><Link to="/login">Login</Link></h5>
                     </div>
                 )
                 }
