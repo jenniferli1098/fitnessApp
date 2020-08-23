@@ -14,7 +14,9 @@ const UserProfile = props => {
     if (!isLoaded(props.username)) {
         return <div>Loading...</div>;
     } else{
-        addButton = (<Link to = {"/editor"} ><button id="myBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>);
+        addButton = (
+            <Link to = {"/editor"} ><button class="menuBtn" title="Create new workout"><i class="fa fa-plus"></i></button></Link>
+        );
     }
     const workouts = Object.keys(props.workouts).map(workoutId =>{
         const workout = props.workouts[workoutId];
@@ -42,10 +44,10 @@ const UserProfile = props => {
     return (
         <div class="container alert alert-success mt-5">
             <div class="row">
-                <div class="col-6 p-1">
+                <div class="col-m-6 p-1">
                     <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} />
                 </div>
-                <div class="col-6 p-1 text-left">
+                <div class="col-m-6 p-1 text-left">
                         <h3>{props.username}</h3>
                         <br/>
                         <p>{props.firstname} {props.lastname}</p>
