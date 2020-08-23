@@ -39,7 +39,7 @@ const UserProfile = props => {
     return (
         <div>
             <div>
-            <img src={`https://api.adorable.io/avatars/250/${props.isLoggedIn}@adorable.io.png`} />
+            <img src={`https://api.adorable.io/avatars/250/${props.userId}@adorable.io.png`} />
                 
             </div>
             <div>Hello {props.username} </div>
@@ -79,7 +79,7 @@ const mapStateToProps = (state, props) => {
     const workouts = profile && profile.workouts;
 
 
-    return {username:username, numWorkouts:numWorkouts, workouts:workouts, isLoggedIn: state.firebase.auth.uid };
+    return {username:username, numWorkouts:numWorkouts, workouts:workouts, isLoggedIn: state.firebase.auth.uid , userId: userId};
 }
 
 
